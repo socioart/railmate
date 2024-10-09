@@ -53,6 +53,11 @@ module Railmate
       exec command
     end
 
+    desc "scplog", "Download log files by scp"
+    def scplog
+      Scplog.run(environment)
+    end
+
     private
     def config
       @config ||= YAML.load_file(CONFIG_FILE)

@@ -26,4 +26,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r(^exe/)) {|f| File.basename(f) }
   spec.require_paths = ["lib"]
   spec.metadata["rubygems_mfa_required"] = "true"
+
+  spec.add_dependency "net-scp", "~> 4.0"
+  spec.add_dependency "net-ssh", "~> 7.3"
+  spec.add_dependency "thor", "~> 1.3"
 end
