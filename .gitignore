@@ -8,4 +8,5 @@
 /tmp/
 
 # rspec failure tracking
+.railmate.yml
 .rspec_status

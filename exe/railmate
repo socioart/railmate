@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "railmate"
+
+Railmate::CLI.start(ARGV)
