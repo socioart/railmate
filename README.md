@@ -1,28 +1,44 @@
 # Railmate
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/railmate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Utility for Rails app operation. It provides commands to check revision, open in browser, SSH to server, and download or view log files.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'railmate'
+gem "railmate", git: "https://github.com/socioart/railmate.git"
 ```
 
 And then execute:
 
     $ bundle install
-
-Or install it yourself as:
-
-    $ gem install railmate
+    $ bundle binstub railmate
 
 ## Usage
 
-TODO: Write usage instructions here
+First. Run `railmate init` to create config file named `.railmate.yml`, and edit it.
+Now, you can run all subcommands listed in output of `railmate` command.
+
+    # curl to "${url}/revision"
+    # See: https://github.com/labocho/rack-revision_route
+    $ railmate revision
+
+    # You can set environment (top level key in .railmate.yml) by `-e` option
+    $ railmate -e production revision
+
+    # Open "${url}"" in browser
+    $ railmate browse
+
+    # SSH to user@hostname
+    $ railmate ssh
+
+    # List and download files in "${directory}/log"
+    $ railmate scplog
+
+    # `tail` log files in "${directory}/log"
+    $ railmate logs
+
 
 ## Development
 
