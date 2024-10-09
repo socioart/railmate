@@ -1,4 +1,6 @@
+require "shellwords"
 require "thor"
+require "uri"
 require "yaml"
 
 module Railmate
@@ -26,10 +28,16 @@ module Railmate
 
     desc "revision", "Show revision"
     def revision
-      require "uri"
-      require "shellwords"
       url = URI.join(environment.fetch("url"), "revision")
       command = "curl #{url.to_s.shellescape}"
+      warn command
+      exec command
+    end
+
+    desc "browse", "Open in browser"
+    def browse
+      url = environment.fetch("url")
+      command = "open #{url.to_s.shellescape}"
       warn command
       exec command
     end
