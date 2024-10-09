@@ -58,6 +58,11 @@ module Railmate
       Scplog.run(environment)
     end
 
+    desc "logs [FILE...]", "Print log file(s)"
+    def logs(*paths)
+      Logs.run(environment, paths)
+    end
+
     private
     def config
       @config ||= YAML.load_file(CONFIG_FILE)

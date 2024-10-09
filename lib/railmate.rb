@@ -4,5 +4,6 @@ module Railmate
 end
 
 require "railmate/cli"
+require "railmate/logs"
 require "railmate/scplog"
 require "railmate/version"
