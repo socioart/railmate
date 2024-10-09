@@ -42,6 +42,17 @@ module Railmate
       exec command
     end
 
+    desc "ssh", "SSH to server"
+    def ssh
+      ssh = URI.parse("ssh://#{environment.fetch("ssh")}")
+      user = ssh.user || ENV.fetch("USER")
+      hostname = ssh.hostname
+      port = ssh.port&.to_i || 22
+      command = "ssh #{user}@#{hostname} -p #{port}"
+      warn command
+      exec command
+    end
+
     private
     def config
       @config ||= YAML.load_file(CONFIG_FILE)
