@@ -39,6 +39,24 @@ Now, you can run all subcommands listed in output of `railmate` command.
     # `tail` log files in "${directory}/log"
     $ railmate logs
 
+## Configuration
+
+Edit `.railmate.yml` in Rails root directory
+
+    # Name of the environment
+    production:
+        # The HTTP-accessible URL used by the `revision` and `browse` commands
+        url: https://example.com
+        # The SSH server used by the `ssh`, `scplog`, and `logs` commands
+        # The user and port can be omitted.
+        ssh: user@example.com:22
+        # The Rails application directory on the server, used by the `scplog` and `logs` commands
+        directory: /var/www/vhosts/example.com/app_name/current
+    # Another enviroment
+    staging:
+        url: https://staging.example.com
+        ssh: user@staging.example.com:22
+        directory: /var/www/vhosts/staging.example.com/app_name/current
 
 ## Development
 
