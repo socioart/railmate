@@ -12,51 +12,59 @@ gem "railmate", git: "https://github.com/socioart/railmate.git"
 
 And then execute:
 
-    $ bundle install
-    $ bundle binstub railmate
+```bash
+$ bundle install
+$ bundle binstub railmate
+```
 
 ## Usage
 
 First. Run `railmate init` to create config file named `.railmate.yml`, and edit it.
 Now, you can run all subcommands listed in output of `railmate` command.
 
-    # curl to "${url}/revision"
-    # See: https://github.com/labocho/rack-revision_route
-    $ railmate revision
+```bash
+# curl to "${url}/revision"
+# See: https://github.com/labocho/rack-revision_route
+$ railmate revision
 
-    # You can set environment (top level key in .railmate.yml) by `-e` option
-    $ railmate -e production revision
+# You can set environment (top level key in .railmate.yml) by `-e` option
+$ railmate -e production revision
 
-    # Open "${url}"" in browser
-    $ railmate browse
+# Open "${url}"" in browser
+$ railmate browse
 
-    # SSH to user@hostname
-    $ railmate ssh
+# SSH to user@hostname
+$ railmate ssh
 
-    # List and download files in "${directory}/log"
-    $ railmate scplog
+# List and download files in "${directory}/log"
+$ railmate scplog
 
-    # `tail` log files in "${directory}/log"
-    $ railmate logs
+# `tail` log files in "${directory}/log"
+$ railmate logs
+```
 
 ## Configuration
 
 Edit `.railmate.yml` in Rails root directory
 
-    # Name of the environment
-    production:
-        # The HTTP-accessible URL used by the `revision` and `browse` commands
-        url: https://example.com
-        # The SSH server used by the `ssh`, `scplog`, and `logs` commands
-        # The user and port can be omitted.
-        ssh: user@example.com:22
-        # The Rails application directory on the server, used by the `scplog` and `logs` commands
-        directory: /var/www/vhosts/example.com/app_name/current
-    # Another enviroment
-    staging:
-        url: https://staging.example.com
-        ssh: user@staging.example.com:22
-        directory: /var/www/vhosts/staging.example.com/app_name/current
+
+```yaml
+# Name of the environment
+production:
+    # The HTTP-accessible URL used by the `revision` and `browse` commands
+    url: https://example.com
+    # The SSH server used by the `ssh`, `scplog`, and `logs` commands
+    # The user and port can be omitted.
+    ssh: user@example.com:22
+    # The Rails application directory on the server, used by the `scplog` and `logs` commands
+    directory: /var/www/vhosts/example.com/app_name/current
+
+# Another enviroment
+staging:
+    url: https://staging.example.com
+    ssh: user@staging.example.com:22
+    directory: /var/www/vhosts/staging.example.com/app_name/current
+```
 
 ## Development
 
