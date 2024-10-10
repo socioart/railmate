@@ -66,6 +66,16 @@ staging:
     directory: /var/www/vhosts/staging.example.com/app_name/current
 ```
 
+
+## zsh completion
+
+The `zsh-completion` command prints the zsh completion script.
+Save it to a directory included in your `$fpath`.
+
+```
+$ railmate zsh-completion > /path/to/fpath/_railmate
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

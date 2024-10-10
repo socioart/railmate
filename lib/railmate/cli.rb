@@ -1,10 +1,13 @@
 require "shellwords"
 require "thor"
+require "thor/zsh_completion"
 require "uri"
 require "yaml"
 
 module Railmate
   class CLI < Thor
+    include ZshCompletion::Command
+
     CONFIG_FILE = ".railmate.yml".freeze
 
     class_option :environment, type: :string, aliases: "-e", desc: "Set environment"

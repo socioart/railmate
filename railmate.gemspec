@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "net-scp", "~> 4.0"
   spec.add_dependency "net-ssh", "~> 7.3"
   spec.add_dependency "thor", "~> 1.3"
+  spec.add_dependency "thor-zsh_completion", "~> 0.1.10"
 end
