@@ -5,12 +5,12 @@ module Railmate
   module Scplog
     module_function
     def run(environment)
-      url = URI.parse("ssh://#{environment.fetch("ssh")}")
+      url = URI.parse("ssh://#{environment.ssh}")
       user = url.user || ENV.fetch("USER")
       hostname = url.hostname
       port = url.port&.to_i || 22
 
-      log_dir = File.join(environment.fetch("directory"), "log")
+      log_dir = File.join(environment.directory, "log")
 
       Net::SSH.start(hostname, user, port: port) do |ssh|
         stdout = ""

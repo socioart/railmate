@@ -28,7 +28,7 @@ module Railmate
 
     desc "revision", "Show revision"
     def revision
-      url = URI.join(environment.fetch("url"), "revision")
+      url = URI.join(environment.url, "revision")
       command = "curl #{url.to_s.shellescape}"
       warn command
       exec command
@@ -36,7 +36,7 @@ module Railmate
 
     desc "browse", "Open in browser"
     def browse
-      url = environment.fetch("url")
+      url = environment.url
       command = "open #{url.to_s.shellescape}"
       warn command
       exec command
@@ -44,7 +44,7 @@ module Railmate
 
     desc "ssh", "SSH to server"
     def ssh
-      ssh = URI.parse("ssh://#{environment.fetch("ssh")}")
+      ssh = URI.parse("ssh://#{environment.ssh}")
       user = ssh.user || ENV.fetch("USER")
       hostname = ssh.hostname
       port = ssh.port&.to_i || 22
@@ -65,7 +65,10 @@ module Railmate
 
     private
     def config
-      @config ||= YAML.load_file(CONFIG_FILE)
+      @config ||= Environment.load_file(CONFIG_FILE)
+    rescue InvalidConfigError => e
+      warn "ERROR: #{e.message} in config"
+      exit 1
     end
 
     def environment

@@ -6,12 +6,12 @@ module Railmate
   module Logs
     module_function
     def run(environment, paths)
-      url = URI.parse("ssh://#{environment.fetch("ssh")}")
+      url = URI.parse("ssh://#{environment.ssh}")
       user = url.user || ENV.fetch("USER")
       hostname = url.hostname
       port = url.port&.to_i || 22
 
-      log_dir = File.join(environment.fetch("directory"), "log")
+      log_dir = File.join(environment.directory, "log")
       logs = paths.empty? ? select_logs(hostname, user, port, log_dir) : paths
 
       command = ["ssh", "#{user}@#{hostname}", "-p", port, "tail", "-f", *logs.map {|l| "#{log_dir}/#{l}" }].shelljoin
