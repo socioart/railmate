@@ -1,7 +1,14 @@
+require "rubygems/version"
+
 module Railmate
   Environment = Struct.new(:url, :ssh, :directory, keyword_init: true) do
     def self.load_file(path)
-      YAML.load_file(path, aliases: true).each_with_object({}) do |(k, v), h|
+      kwargs = if Gem::Version.new(YAML::VERSION) >= Gem::Version.new("4")
+        {aliases: true}
+      else
+        {}
+      end
+      YAML.load_file(path, **kwargs).each_with_object({}) do |(k, v), h|
         v.transform_keys!(&:to_sym)
         unknown_keys = v.keys - members
 
